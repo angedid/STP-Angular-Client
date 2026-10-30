@@ -1,0 +1,26 @@
+<section class="callback">
+  @switch (status()) {
+    @case ('pending') {
+      <h1 id="callback-title">Signing you in…</h1>
+      <p role="status" aria-live="polite">Please wait while we confirm your sign-in with the server.</p>
+      <mat-progress-bar mode="indeterminate" aria-labelledby="callback-title"></mat-progress-bar>
+    }
+    @case ('success') {
+      <h1>Signed in</h1>
+      <p role="status" aria-live="polite">You are signed in. Taking you to your home page…</p>
+    }
+    @case ('error') {
+      <h1>Sign-in could not be completed</h1>
+      <p role="alert" class="callback-error">{{ errorMessage() }}</p>
+      <button
+        matButton="elevated"
+        type="button"
+        class="callback-restart"
+        [disabled]="restarting()"
+        (click)="restart()"
+      >
+        Restart sign-in
+      </button>
+    }
+  }
+</section>

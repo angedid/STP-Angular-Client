@@ -1,0 +1,35 @@
+<app-page-header [title]="title()" [subtitle]="status() === 'success' ? tenant()!.id : null" />
+
+<section class="tenant">
+  @switch (status()) {
+    @case ('loading') {
+      <p role="status" aria-live="polite" id="tenant-loading">Loading tenant details…</p>
+      <mat-progress-bar mode="indeterminate" aria-labelledby="tenant-loading"></mat-progress-bar>
+    }
+    @case ('success') {
+      @if (tenant()!.fields.length > 0) {
+        <dl class="tenant-fields">
+          @for (field of tenant()!.fields; track field.label) {
+            <dt>{{ field.label }}</dt>
+            <dd>{{ field.value }}</dd>
+          }
+        </dl>
+      } @else {
+        <p>The server returned no details for this tenant.</p>
+      }
+    }
+    @case ('expired') {
+      <p role="status" aria-live="polite">Your session has expired. Taking you to the sign-in page…</p>
+    }
+    @case ('error') {
+      <p role="alert" class="tenant-error">{{ errorMessage() }}</p>
+      @if (retryable()) {
+        <button matButton="elevated" type="button" class="tenant-retry" (click)="load()">
+          Try again
+        </button>
+      } @else {
+        <a matButton="elevated" routerLink="/home" class="tenant-home">Back to home</a>
+      }
+    }
+  }
+</section>

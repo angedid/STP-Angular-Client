@@ -1,0 +1,72 @@
+<nav class="sidebar" aria-label="Main">
+  <div class="sidebar-brand">
+    <img src="images/asso-logo0.png" alt="" class="sidebar-logo" width="44" height="44">
+    <div>
+      <div class="sidebar-brand-name">STP</div>
+      <div class="sidebar-brand-tagline">Portail Web</div>
+    </div>
+  </div>
+
+  @if (user(); as user) {
+    <div class="sidebar-user">
+      <app-profile-photo />
+      <button
+        matButton
+        type="button"
+        class="user-menu-trigger"
+        [matMenuTriggerFor]="userMenu"
+        aria-label="Account menu for {{ user.displayName }}"
+      >
+        <span class="user-name">{{ user.displayName }}</span>
+        <mat-icon aria-hidden="true">arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #userMenu="matMenu" class="user-menu">
+        <a mat-menu-item routerLink="/profile">Profile</a>
+        <a mat-menu-item routerLink="/tenants">Tenants</a>
+        <a mat-menu-item routerLink="/eligibility">Eligibility</a>
+        <button mat-menu-item type="button" class="logout-item" [disabled]="loggingOut()" (click)="logout()">
+          Logout
+        </button>
+      </mat-menu>
+    </div>
+  }
+
+  @if (logoutError(); as message) {
+    <div role="alert" class="sidebar-error">
+      <span>{{ message }}</span>
+      <button matButton type="button" class="sidebar-error-dismiss" (click)="dismissLogoutError()">
+        Dismiss
+      </button>
+    </div>
+  }
+
+  <ul class="sidebar-nav">
+    @for (link of links; track link.path) {
+      <li>
+        <a
+          class="sidebar-link"
+          [routerLink]="link.path"
+          routerLinkActive="sidebar-link-active"
+          ariaCurrentWhenActive="page"
+        >
+          <mat-icon aria-hidden="true">{{ link.icon }}</mat-icon>
+          <span>{{ link.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+
+  <div class="sidebar-workspace">
+    <span class="sidebar-workspace-label" id="workspace-label">Espace</span>
+    <mat-button-toggle-group
+      class="workspace-toggle"
+      aria-labelledby="workspace-label"
+      hideSingleSelectionIndicator
+      [value]="workspace()"
+      (change)="selectWorkspace($event)"
+    >
+      <mat-button-toggle value="grossiste">Grossiste</mat-button-toggle>
+      <mat-button-toggle value="banque">Banque</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</nav>

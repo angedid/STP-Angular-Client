@@ -1,0 +1,13 @@
+@if (isAuthenticated()) {
+  <div class="shell">
+    <app-sidebar class="shell-sidebar" />
+    <main class="shell-main">
+      <router-outlet />
+    </main>
+  </div>
+} @else {
+  <app-guest-toolbar></app-guest-toolbar>
+  <main class="guest-main">
+    <router-outlet />
+  </main>
+}

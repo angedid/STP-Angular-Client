@@ -1,0 +1,15 @@
+.callback {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.callback h1 {
+  color: #d3045d;
+  font-size: 1.5rem;
+}
+
+.callback-error {
+  color: #9b0000;
+}

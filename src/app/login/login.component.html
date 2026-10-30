@@ -1,0 +1,16 @@
+<section class="login">
+  @switch (status()) {
+    @case ('redirecting') {
+      <h1 id="login-title">Redirecting to sign-in…</h1>
+      <p role="status" aria-live="polite">You are being sent to the sign-in server.</p>
+      <mat-progress-bar mode="indeterminate" aria-labelledby="login-title"></mat-progress-bar>
+    }
+    @case ('error') {
+      <h1>Sign-in could not be started</h1>
+      <p role="alert" class="login-error">{{ errorMessage() }}</p>
+      <button matButton="elevated" type="button" class="login-retry" (click)="start()">
+        Try again
+      </button>
+    }
+  }
+</section>

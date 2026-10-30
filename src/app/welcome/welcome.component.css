@@ -1,0 +1,72 @@
+.field-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-container > * {
+  width: 100%;
+}
+.fields-error{
+  font-size: 0.8em;
+  color: red;
+}
+
+.card-header{
+  background-color: #D3045D;
+  color: #ffffff;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #D3045D;
+  border-color: #D3045D;
+}
+
+.asso-header{
+  align-content: center;
+  text-align: center;
+  color: #D3045D;
+}
+
+
+
+
+/*==================================================
+ * Effect 5
+ * ===============================================*/
+.effect
+{
+  position: relative;
+}
+
+
+.effect:before, .effect:after
+{
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 25px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width:300px;
+  background: #777;
+  -webkit-box-shadow: 0 35px 20px #777;
+  -moz-box-shadow: 0 35px 20px #777;
+  box-shadow: 0 35px 20px #777;
+  -webkit-transform: rotate(-8deg);
+  -moz-transform: rotate(-8deg);
+  -o-transform: rotate(-8deg);
+  -ms-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+.effect:after
+{
+  -webkit-transform: rotate(8deg);
+  -moz-transform: rotate(8deg);
+  -o-transform: rotate(8deg);
+  -ms-transform: rotate(8deg);
+  transform: rotate(8deg);
+  right: 10px;
+  left: auto;
+}

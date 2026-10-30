@@ -1,0 +1,43 @@
+.tenant {
+  padding: 1.5rem 1.75rem;
+}
+
+.tenant-fields {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 12px;
+  background-color: var(--mat-sys-surface);
+}
+
+.tenant-fields dt {
+  font-weight: 500;
+}
+
+.tenant-fields dd {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.tenant-error {
+  color: #9b0000;
+}
+
+@media (max-width: 600px) {
+  .tenant {
+    padding: 1rem;
+  }
+
+  .tenant-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.15rem 0;
+  }
+
+  .tenant-fields dd {
+    margin-bottom: 0.75rem;
+  }
+}

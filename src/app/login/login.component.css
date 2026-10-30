@@ -1,0 +1,15 @@
+.login {
+  max-width: 40rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.login h1 {
+  color: #d3045d;
+  font-size: 1.5rem;
+}
+
+.login-error {
+  color: #9b0000;
+}

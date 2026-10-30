@@ -1,0 +1,12 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.custom-color-toolbar {
+  background-color: white; /* Specific hex color */
+  color: #D3045D; /* Ensure text is readable */
+}
+.asso-logo{
+  margin-top: 20px;
+  height: 50px;
+  width: 50px;
+}

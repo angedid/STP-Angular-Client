@@ -1,0 +1,62 @@
+{
+  "name": "asso-angular-client",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "start:demo": "ng serve --configuration demo",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "mock:auth": "node tools/mock-oauth-server/server.mjs",
+    "test:mock-auth": "node --test \"tools/mock-oauth-server/**/*.test.mjs\"",
+    "e2e": "playwright test",
+    "e2e:install": "playwright install chromium",
+    "demo": "node tools/local-demo.mjs"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
+  },
+  "private": true,
+  "packageManager": "npm@11.6.4",
+  "dependencies": {
+    "@angular/animations": "^21.1.0",
+    "@angular/cdk": "~21.1.0",
+    "@angular/common": "^21.0.0",
+    "@angular/compiler": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/forms": "^21.0.0",
+    "@angular/material": "~21.1.0",
+    "@angular/platform-browser": "^21.0.0",
+    "@angular/router": "^21.0.0",
+    "@coreui/angular": "^5.6.6",
+    "@coreui/coreui": "^5.5.0",
+    "@coreui/icons-angular": "^5.6.6",
+    "angular-oauth2-oidc": "^20.0.2",
+    "bootstrap": "^5.3.8",
+    "crypto-js": "^4.2.0",
+    "ngx-toastr": "^19.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.0.2",
+    "@angular/cli": "^21.0.2",
+    "@angular/compiler-cli": "^21.0.0",
+    "@angular/material": "^21.1.0",
+    "@playwright/test": "^1.64.0",
+    "@types/crypto-js": "^4.2.2",
+    "jsdom": "^27.1.0",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
+  }
+}

@@ -1,0 +1,55 @@
+@if (isAuthenticated()) {
+  <app-page-header title="Tableau de bord" [subtitle]="establishment()" />
+
+  <div class="dashboard">
+    <section class="kpi-grid" aria-label="Indicateurs">
+      <article class="kpi-card">
+        <h2 class="kpi-label">Encours total</h2>
+        <p class="kpi-value">{{ overview.totalOutstanding | fcfa }}</p>
+      </article>
+      <article class="kpi-card">
+        <h2 class="kpi-label">Vendeurs actifs</h2>
+        <p class="kpi-value">{{ overview.activeVendors }}</p>
+      </article>
+      <article class="kpi-card">
+        <h2 class="kpi-label">Alertes de retard</h2>
+        <p class="kpi-value" [class.kpi-value-alert]="overview.lateAlerts > 0">
+          {{ overview.lateAlerts }}
+        </p>
+      </article>
+    </section>
+
+    <section class="vendors" aria-labelledby="recent-vendors-title">
+      <div class="section-header">
+        <h2 id="recent-vendors-title" class="section-title">Vendeurs récents</h2>
+        <a matButton="filled" routerLink="/credits/new" class="new-credit">
+          <mat-icon aria-hidden="true">person_add</mat-icon>
+          Nouveau crédit
+        </a>
+      </div>
+
+      <ul class="vendor-list">
+        @for (vendor of overview.recentVendors; track vendor.id) {
+          <li class="vendor-row">
+            <div class="vendor-identity">
+              <span class="vendor-name">{{ vendor.name }}</span>
+              <span class="vendor-market">{{ vendor.market }}</span>
+            </div>
+            <span class="vendor-amount">{{ vendor.outstanding | fcfa }}</span>
+            <span [class]="'status-chip status-' + vendor.status">
+              {{ statusLabel(vendor.status) }}
+            </span>
+          </li>
+        } @empty {
+          <li class="vendor-empty">Aucun vendeur pour le moment.</li>
+        }
+      </ul>
+    </section>
+  </div>
+} @else {
+  <section class="home-guest">
+    <h1>Not signed in</h1>
+    <p>Sign in to access your personal area.</p>
+    <a matButton="elevated" routerLink="/login">Sign in</a>
+  </section>
+}
